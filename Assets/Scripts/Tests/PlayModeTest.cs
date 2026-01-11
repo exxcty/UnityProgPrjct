@@ -11,11 +11,12 @@ public class PlayModeTest
         GameObject playerGO = new GameObject();
         Health health = playerGO.AddComponent<Health>();
 
-        yield return null; 
+        yield return null;
 
+        float initialHealth = health.CurrentHealth;
         health.TakeDamage(10f);
 
-        Assert.Pass(); 
+        Assert.AreEqual(initialHealth - 10f, health.CurrentHealth);
 
         Object.Destroy(playerGO);
     }
